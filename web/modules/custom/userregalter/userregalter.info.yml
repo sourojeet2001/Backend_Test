@@ -1,0 +1,5 @@
+name: 'UserRegAlter'
+type: module
+description: 'Alters the default user registration form to add a new password field.'
+package: Custom
+core_version_requirement: ^10

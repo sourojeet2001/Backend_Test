@@ -1,0 +1,7 @@
+testmod.example:
+  path: '/getdata'
+  defaults:
+    _title: 'Get API Data'
+    _controller: '\Drupal\myapi\Controller\FirstController::build'
+  requirements:
+    _permission: 'access content'

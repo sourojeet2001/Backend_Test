@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for BodyTrim module.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_node_view().
+ */
+function bodytrim_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->getEntityType()->id() == 'node' && $entity->bundle() == 'blogs') {
+    $body = $entity->get('body')->value;
+    $trimmed_body = implode(' ', array_slice(explode(' ', strip_tags($body)), 0, 50));
+    $build['body'][0]['#text'] = $trimmed_body;
+    $build['read_more_link'] = [
+      '#type' => 'link',
+      '#title' => t('Read More'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => ['class' => ['read-more-toggle']],
+    ];
+    $build['read_less_link'] = [
+      '#type' => 'link',
+      '#title' => t('Read More'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => ['class' => ['read-less-toggle']],
+      '#access' => FALSE,
+    ];
+    $build['#attached']['library'][] = 'bodytrim/custom';
+  }
+}

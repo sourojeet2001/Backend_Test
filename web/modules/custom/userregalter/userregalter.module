@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for UserRegAlter module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the user registration form.
+ */
+function userregalter_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $form['#title'] = t('Become an Author');
+  $form['#submit'][] = 'custom_submit';
+}
+
+/**
+ * Custom function for dynamically allocating userrole based on selection.
+ */
+function custom_submit($form, &$form_state) {
+  $selected_role = $form_state->getValue('field_author');
+  $roles_to_assign = [];
+  switch ($selected_role) {
+    case 'Blogger':
+      $roles_to_assign[] = 'blogger';
+      break;
+
+    case 'Guest Blogger':
+      $roles_to_assign[] = 'guest_blogger';
+      break;
+  }
+  if (!empty($roles_to_assign)) {
+    $user = $form_state->getFormObject()->getEntity();
+    $user->addRole($roles_to_assign);
+    $user->save();
+  }
+}
