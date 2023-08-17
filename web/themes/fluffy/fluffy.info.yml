@@ -1,0 +1,6 @@
+name: fluffy
+type: theme
+description: "Custom Sub theme of Olivero."
+core_version_requirement: ^10
+base theme: olivero
+

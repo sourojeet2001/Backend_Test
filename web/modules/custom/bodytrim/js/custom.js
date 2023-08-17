@@ -7,9 +7,9 @@
       if (context !== document) {
         return;
       }
-      $('.read-more-toggle', context).once('bodytrim').each(function () {
+      $('readToggle','.read-more-toggle', context).once('bodytrim').each(function () {
         var $toggle = $(this);
-        var $content = $toggle.closest('.bodytrim-node-content');
+        var $content = $toggle.closest('.node__content');
         var $readLess = $content.find('.read-less-toggle');
 
         $toggle.on('click', function () {

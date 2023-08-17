@@ -1,0 +1,20 @@
+uuid: 1938243c-b329-4660-9768-706b99dd40bc
+langcode: en
+status: true
+dependencies:
+  theme:
+    - fluffy
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: fluffy_primary_admin_actions
+theme: fluffy
+region: highlighted
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }
