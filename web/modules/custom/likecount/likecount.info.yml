@@ -1,0 +1,6 @@
+name: Like Count
+type: module
+description: Add a Like Count field on blog content type.
+package: Custom
+core_version_requirement: ^10
+

@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for LikeCount module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function likecount_theme() {
+  return [
+    'like_dislike' => [
+      'variables' => [
+        'likes' => NULL,
+        'dislikes' => NULL,
+        'disable' => NULL,
+        'like_url' => NULL,
+        'dislike_url' => NULL,
+        'entity_id' => NULL,
+        'likes_label' => NULL,
+        'dislikes_label' => NULL,
+      ],
+    ],
+  ];
+}

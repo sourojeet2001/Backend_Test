@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.node.blogs.body
     - field.field.node.blogs.field_blog_tags
+    - field.field.node.blogs.field_like
     - node.type.blogs
   module:
+    - likecount
     - text
     - user
 id: node.blogs.default
@@ -28,6 +30,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_like:
+    type: like_dislike_formatter
+    label: above
+    settings:
+      likes_label: Like
+      dislikes_label: Dislike
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }
