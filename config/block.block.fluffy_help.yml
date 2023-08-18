@@ -1,0 +1,22 @@
+uuid: 0c9fad93-8b94-4366-a70e-4464bf5a8ea0
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - fluffy
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: fluffy_help
+theme: fluffy
+region: sidebar_first
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

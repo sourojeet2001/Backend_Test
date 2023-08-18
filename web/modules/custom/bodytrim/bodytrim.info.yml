@@ -1,0 +1,5 @@
+name: 'BodyTrim'
+type: module
+description: 'To trim body word count to specific words.'
+package: Custom
+core_version_requirement: ^10

@@ -1,0 +1,5 @@
+name: 'AutomateDeletion'
+type: module
+description: 'Module to automate content deletion.'
+package: Custom
+core_version_requirement: ^10

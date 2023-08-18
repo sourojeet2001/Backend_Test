@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for AutomateDeletion module.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_cron().
+ */
+function automatedeletion_cron() {
+  // Running cron only once a day at 5 AM.
+  if (date('G', time()) == 5) {
+    $currentDateTime = new DrupalDateTime();
+    // Calculate the date one year ago.
+    $oneYearAgo = clone $currentDateTime;
+    $oneYearAgo->modify('-1 year');
+    $oneYearAgoDate = $oneYearAgo->format('Y-m-d H:i:s');
+    $prvTime = strtotime($oneYearAgoDate);
+    $database = \Drupal::database();
+    // Querying through DB to find entries one year older.
+    $query = $database->select('node_field_data', 'n')
+      ->fields('n', ['nid'])
+      ->condition('n.created', $prvTime, '<')
+      ->execute();
+    $results = $query->fetchAll();
+    foreach ($results as $result) {
+      $node = Node::load($result->nid);
+      $uid = $node->getOwnerId();
+      $user = User::load($uid);
+      $userRole = $user->getRoles();
+      // Check if the "guest_blogger" role exists.
+      if (in_array('guest_blogger', $userRole)) {
+        if ($node) {
+          $node->delete();
+        }
+      }
+    }
+  }
+}

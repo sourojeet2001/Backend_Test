@@ -1,0 +1,9 @@
+uuid: 4f99ce81-0d32-4002-90f6-7395a911cb9c
+langcode: en
+status: true
+dependencies: {  }
+id: guest_blogger
+label: 'Guest Blogger'
+weight: 5
+is_admin: null
+permissions: {  }

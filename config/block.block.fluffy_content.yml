@@ -1,0 +1,22 @@
+uuid: 439354f3-ff64-456d-aae3-931cea6bf161
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - fluffy
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: fluffy_content
+theme: fluffy
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

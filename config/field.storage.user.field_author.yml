@@ -1,0 +1,27 @@
+uuid: 3bcd599c-e302-4d3f-8016-085838ac14ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_author
+field_name: field_author
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Blogger
+      label: Blogger
+    -
+      value: 'Guest Blogger'
+      label: 'Guest Blogger'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
